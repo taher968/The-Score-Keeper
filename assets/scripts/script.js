@@ -5,6 +5,7 @@ var game = true;
 var button1 = document.querySelector("#player-1");
 var button2 = document.querySelector("#player-2");
 var reset = document.querySelector("#reset");
+var result = document.querySelector(".result");
 
 var score1 = document.querySelector("#score-1");
 var score2 = document.querySelector("#score-2");
@@ -29,6 +30,7 @@ button1.addEventListener("click",function() {
             score1.style.color = "green";
             console.log("The Game is over");
             game = false;
+            result.textContent = "Player 1 wins";
         }
     }
 
@@ -41,6 +43,7 @@ button2.addEventListener("click",function() {
         if(scorePlayer2 == maxScore.textContent) {
             score2.style.color = "green";
             console.log("The Game is over");
+            result.textContent = "Player 2 wins"
             game = false;
     
         }
