@@ -20,6 +20,7 @@ function reset1() {
     score1.textContent = 0;
     score2.textContent = 0;
     game = true;
+    result.textContent = "";
 }
 
 button1.addEventListener("click",function() {
