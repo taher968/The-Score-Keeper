@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <title>Score Keeping App</title>
+	<style>
+		.head {
+    color: white;
+    background: black;
+    margin: 0;
+    padding: 25px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.container {
+    text-align: center;
+    margin: 0 auto; 
+    width: 600px;
+}
+.buttons {
+    margin: 20px;
+}
+button {
+    border: none;
+    background: steelblue;
+    color: white;
+    padding: 10px;
+    margin: 15px;
+}
+	</style>
+</head>
+<body>
+    <h2 class="head">The Score Keeper</h2>
+    <div class="container">
+        <h1><span id="score-1">0</span> to <span id="score-2">0</span></h1>
+        <p>Playing to: <span id="play-number">5</span></p>
+        <input type="number">
+        <div class="buttons">
+            <button id="player-1">Player 1</button>
+            <button id="player-2">Player 2</button>
+        </div>
+        <button id="reset">Reset</button>
+        <div class="result"></div>
+    </div>
+ 
+    <script>
+		var scorePlayer1 = 0;
+var scorePlayer2 = 0;
+var game = true;
+
+var button1 = document.querySelector("#player-1");
+var button2 = document.querySelector("#player-2");
+var reset = document.querySelector("#reset");
+var result = document.querySelector(".result");
+
+var score1 = document.querySelector("#score-1");
+var score2 = document.querySelector("#score-2");
+var maxScore = document.querySelector("#play-number");
+var input = document.querySelector("input");
+
+function reset1() {
+    score1.style.color = "black";
+    score2.style.color = "black";
+    scorePlayer1 = 0;
+    scorePlayer2 = 0;
+    score1.textContent = 0;
+    score2.textContent = 0;
+    game = true;
+    result.textContent = "";
+}
+
+button1.addEventListener("click",function() {
+    if(game) {
+        scorePlayer1++;
+        score1.textContent = scorePlayer1;
+        if(scorePlayer1 == maxScore.textContent) {
+            score1.style.color = "green";
+            console.log("The Game is over");
+            game = false;
+            result.textContent = "Player 1 wins";
+        }
+    }
+
+});
+
+button2.addEventListener("click",function() {
+    if(game) {
+        scorePlayer2++;
+        score2.textContent = scorePlayer2;
+        if(scorePlayer2 == maxScore.textContent) {
+            score2.style.color = "green";
+            console.log("The Game is over");
+            result.textContent = "Player 2 wins"
+            game = false;
+    
+        }
+    }
+
+
+
+});
+
+input.addEventListener("change",function() {
+    maxScore.textContent = input.value;
+    reset1();
+})
+
+reset.addEventListener("click",function() {
+    reset1();
+})
+
+	</script>
+</body>
+</html>
